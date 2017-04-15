@@ -123,17 +123,9 @@ class SiteController extends AppController
     }
     public  function actionHello()
     {
-         //return 'hello world';
+        //return 'hello world';
         return $this->render('hello');
     }
-    //коментарий 2
-    //тест 32
-    public  function actionTestik()
-    {
 
-    }
-    public  function actionTestik2()
-    {
-
-    }
+//последняя проверка
 }
