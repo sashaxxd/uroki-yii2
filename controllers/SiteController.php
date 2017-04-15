@@ -126,5 +126,5 @@ class SiteController extends AppController
          //return 'hello world';
         return $this->render('hello');
     }
-    //коментарий
+    //коментарий 2
 }
