@@ -132,4 +132,8 @@ class SiteController extends AppController
     {
 
     }
+    public  function actionTestik2()
+    {
+
+    }
 }
