@@ -128,4 +128,8 @@ class SiteController extends AppController
     }
     //коментарий 2
     //тест 32
+    public  function actionTestik()
+    {
+
+    }
 }
