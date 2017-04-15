@@ -127,4 +127,5 @@ class SiteController extends AppController
         return $this->render('hello');
     }
     //коментарий 2
+    //тест 3
 }
