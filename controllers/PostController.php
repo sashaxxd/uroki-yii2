@@ -17,38 +17,37 @@ use app\models\TestForm;
 class PostController extends AppController//Одно пространство имен не надо подключать use
 {
     //указываем шаблон для всего контроллера
-    public  $layout = 'template';
+    public $layout = 'template';
 
     public function actionIndex()
     {
-         if(Yii::$app->request->isAjax)// Если отправлено методом аякс
-         {
-             // Debug($_POST);// Распечатываем данные с post обчным способом
-             Debug(Yii::$app->request->post());// Распечатываем данные с post методом YII
-             return'test';
+        if (Yii::$app->request->isAjax)// Если отправлено методом аякс
+        {
+            // Debug($_POST);// Распечатываем данные с post обчным способом
+            Debug(Yii::$app->request->post());// Распечатываем данные с post методом YII
+            return 'test';
 
-         }
+        }
         $model = new TestForm();
-        if($model->load(Yii::$app->request->post()))// Если данные загружены в модель
+        if ($model->load(Yii::$app->request->post()))// Если данные загружены в модель
         {
             //Debug($model);die;
-            if($model->validate())
-            {
+            if ($model->validate()) {
                 Yii::$app->session->setFlash('sucсess', 'Данные приняты');// Запись в сессию при валидации
                 return $this->refresh();// Сбрасываем данные с формы
-            }
-            else{
-                 Yii::$app->session->setFlash('error', 'Ошибка');
+            } else {
+                Yii::$app->session->setFlash('error', 'Ошибка');
                 //return $this->refresh();// тут не будем сбрасывать данные что бы можно было поправить ЕСЛИ ВВЕЛ НЕ ВЕРНО
             }
 
         }
 
-        return $this->render('test',[
+        return $this->render('test', [
             'model' => $model,
         ]);
     }
-    public  function  actionShow()
+
+    public function  actionShow()
     {
         $this->view->title = 'Одын одын';// Указываем тайтл для конкретного экшэна
         $this->view->registerMetaTag(['name' => 'keywords', 'content' => 'ключевые слова']);//метод для метатегов
@@ -86,11 +85,11 @@ class PostController extends AppController//Одно пространство и
 
     public function actionCreate()//запись в базу
     {
-        if(Yii::$app->request->isAjax)// Если отправлено методом аякс
+        if (Yii::$app->request->isAjax)// Если отправлено методом аякс
         {
             // Debug($_POST);// Распечатываем данные с post обчным способом
             Debug(Yii::$app->request->post());// Распечатываем данные с post методом YII
-            return'test';
+            return 'test';
 
         }
         $model = new Create();
@@ -101,23 +100,20 @@ class PostController extends AppController//Одно пространство и
         //$model->save();//Метод save валидация берется из моделе если не надо валидировать ставим false
 
 
-
-        if($model->load(Yii::$app->request->post()))// Если данные загружены в модель
+        if ($model->load(Yii::$app->request->post()))// Если данные загружены в модель
         {
             //Debug($model);die;
-            if($model->save())
-            {
+            if ($model->save()) {
                 Yii::$app->session->setFlash('sucсess', 'Данные приняты');// Запись в сессию при валидации
                 return $this->refresh();// Сбрасываем данные с формы
-            }
-            else{
+            } else {
                 Yii::$app->session->setFlash('error', 'Ошибка');
                 //return $this->refresh();// тут не будем сбрасывать данные что бы можно было поправить ЕСЛИ ВВЕЛ НЕ ВЕРНО
             }
 
         }
 
-        return $this->render('create',[
+        return $this->render('create', [
             'model' => $model,
         ]);
     }
@@ -125,11 +121,11 @@ class PostController extends AppController//Одно пространство и
 
     public function actionUpdate()//изменяем запись
     {
-        if(Yii::$app->request->isAjax)// Если отправлено методом аякс
+        if (Yii::$app->request->isAjax)// Если отправлено методом аякс
         {
             // Debug($_POST);// Распечатываем данные с post обчным способом
             Debug(Yii::$app->request->post());// Распечатываем данные с post методом YII
-            return'test';
+            return 'test';
 
         }
 
@@ -143,34 +139,31 @@ class PostController extends AppController//Одно пространство и
         //$model->save();//Метод save валидация берется из моделе если не надо валидировать ставим false
 
 
-
-        if($model->load(Yii::$app->request->post()))// Если данные загружены в модель
+        if ($model->load(Yii::$app->request->post()))// Если данные загружены в модель
         {
             //Debug($model);die;
-            if($model->save())
-            {
+            if ($model->save()) {
                 Yii::$app->session->setFlash('sucсess', 'Данные приняты');// Запись в сессию при валидации
                 return $this->refresh();// Сбрасываем данные с формы
-            }
-            else{
+            } else {
                 Yii::$app->session->setFlash('error', 'Ошибка');
                 //return $this->refresh();// тут не будем сбрасывать данные что бы можно было поправить ЕСЛИ ВВЕЛ НЕ ВЕРНО
             }
 
         }
 
-        return $this->render('update',[
+        return $this->render('update', [
             'model' => $model,
         ]);
     }
 
     public function actionDelete()//изменяем запись
     {
-        if(Yii::$app->request->isAjax)// Если отправлено методом аякс
+        if (Yii::$app->request->isAjax)// Если отправлено методом аякс
         {
             // Debug($_POST);// Распечатываем данные с post обчным способом
             Debug(Yii::$app->request->post());// Распечатываем данные с post методом YII
-            return'test';
+            return 'test';
 
         }
 
@@ -186,26 +179,62 @@ class PostController extends AppController//Одно пространство и
         //$model->save();//Метод save валидация берется из моделе если не надо валидировать ставим false
 
 
-
-        if($model->load(Yii::$app->request->post()))// Если данные загружены в модель
+        if ($model->load(Yii::$app->request->post()))// Если данные загружены в модель
         {
             //Debug($model);die;
-            if($model->delete())
-            {
+            if ($model->delete()) {
                 Yii::$app->session->setFlash('sucсess', 'Данные приняты');// Запись в сессию при валидации
                 return $this->refresh();// Сбрасываем данные с формы
-            }
-            else{
+            } else {
                 Yii::$app->session->setFlash('error', 'Ошибка');
                 //return $this->refresh();// тут не будем сбрасывать данные что бы можно было поправить ЕСЛИ ВВЕЛ НЕ ВЕРНО
             }
 
         }
 
-        return $this->render('update',[
+        return $this->render('update', [
             'model' => $model,
         ]);
     }
 
+    public function actionAjax()
+    {
 
+
+
+            return $this->render('ajax');
+
+
+    }
+
+    public function actionMain()
+    {
+        if (Yii::$app->request->isAjax)// Если отправлено методом аякс
+        {
+
+
+            $search = Yii::$app->request->post();// Распечатываем данные с post методом YII
+
+
+            $search = trim(implode($search));
+
+
+            $query = Category::find()->asArray()->where(['like', 'title', $search])->all();//Делаем выборку из базы
+
+            if(!$query || $search == null)
+            {
+                echo 'Поиск не дал результатов';die;
+            }
+
+            //Debug($query);
+            foreach ($query as $q)
+            {
+                echo $q['title'].'<br>';
+            }
+        }
+
+
+
+
+    }
 }
